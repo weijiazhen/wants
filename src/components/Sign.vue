@@ -47,9 +47,8 @@ export default {
           tokenCode: Cookies.get("tokenCode")
         };
       }
-      this.$axios
-        .post("http://10.3.132.218:3000/signin/login", obj)
-        .then(function(response) {
+      this.$axios.post("http://10.3.132.218:3000/signin/login", obj).then(
+        function(response) {
           let data = response.data;
           if (data.status == 1) {
             // 登录成功
@@ -58,6 +57,9 @@ export default {
             if (data.token) {
               Cookies.set("tokenCode", data.token);
             }
+            this.$router.push({
+              path: "/"
+            });
           } else {
             // 登录失败
             Cookies.set("status", 0);
@@ -65,8 +67,10 @@ export default {
             Cookies.remove("tokenCode");
             Cookies.remove("username");
           }
-          alert(data.meg);
-        });
+
+          // console.log(this.$router);
+        }.bind(this)
+      );
     }
   }
 };

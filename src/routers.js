@@ -67,7 +67,7 @@ const router = new VueRouter({
 })
 
 
-router.beforeEach(async(to, from, next) => {
+router.beforeEach(async (to, from, next) => {
     // const data = await axios.post('https://www.easy-mock.com/mock/5d3fe0fc738f621651cd1f4a/list/login', {
     //     params: {
     //         // 存在cookie里面

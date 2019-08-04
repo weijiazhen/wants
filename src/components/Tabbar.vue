@@ -1,15 +1,17 @@
 <template>
   <div class="tabbar">
     <!-- 头部搜索框 -->
-    <div class="search">
+    <div  class="search">
       <van-search
         placeholder=" 潮流新品特卖 "
         v-model="value"
         right-icon="contact"
         background="#fff034"
-        shape="round"
         input-align="center"
       />
+      <!-- <div style="float:left" slot="action" @click="onSearch">
+        <img src="http://w.wantscart.com/static/images/2.png" alt="" width="22">
+      </div> -->
     </div>
     <!-- 第一层路由 -->
     <keep-alive>
