@@ -1,20 +1,23 @@
 <template>
-    <div class="login">
-        <van-nav-bar title="登录" left-arrow @click-left="goBack"></van-nav-bar>
-        <div class="zy-tex">
-          <p class="text">登录</p>
-          <p class="det">如果你是第一次登录，系统将自动创建账号</p>
-          <!-- 输入框 -->
-          <van-cell-group>
-            <van-field v-model="username" placeholder="请输入用户名" type="text"/>
-            <van-field v-model="pw" placeholder="密码" type="password"/>
-          </van-cell-group>
-          <!-- 大号按钮 -->
-          <van-button type="primary" size="large" @click="sign">账号登录</van-button>
-          <!-- 提示 -->
-        </div>
-          <p class="tisi">*登录即表示你同意"<span style="color:#07c160">用户使用协议</span>"</p>
+  <div class="login">
+    <van-nav-bar title="登录" left-arrow @click-left="goBack"></van-nav-bar>
+    <div class="zy-tex">
+      <p class="text">登录</p>
+      <p class="det">如果你是第一次登录，系统将自动创建账号</p>
+      <!-- 输入框 -->
+      <van-cell-group>
+        <van-field v-model="username" placeholder="请输入用户名" type="text" />
+        <van-field v-model="pw" placeholder="密码" type="password" />
+      </van-cell-group>
+      <!-- 大号按钮 -->
+      <van-button type="primary" size="large" @click="sign">账号登录</van-button>
+      <!-- 提示 -->
     </div>
+    <p class="tisi">
+      *登录即表示你同意"
+      <span style="color:#07c160">用户使用协议</span>"
+    </p>
+  </div>
 </template>
 
 <script>
@@ -67,7 +70,7 @@ export default {
             Cookies.remove("tokenCode");
             Cookies.remove("username");
           }
-
+          alert(data.meg);
           // console.log(this.$router);
         }.bind(this)
       );

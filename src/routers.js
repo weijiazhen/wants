@@ -4,6 +4,8 @@ import VueRouter from 'vue-router'
 // 安装路由
 Vue.use(VueRouter)
 
+import Cookies from 'js-cookie'
+
 // 定义路由组件
 import Tabbar from './components/Tabbar'
 import Home from './components/Tabbar/Home'
@@ -61,6 +63,7 @@ const routes = [{
     }
 ]
 
+
 const router = new VueRouter({
     // mode: 'history',
     routes
@@ -76,14 +79,15 @@ router.beforeEach(async (to, from, next) => {
     //     }
     // })
     // let isLogin = data.data.data.status
-    //     // 如果你没登陆你就进sign
-    //     // 如果你登陆 next
+    // 如果你没登陆你就进sign
+    // 如果你登陆 next
 
     // 如果你登陆了你就next
     // 或者你就要去登陆页，你也可以next
+    let status = Cookies.get("status");
 
     // 如果你是首页，详情页，登录页或者你登陆了，都可以进去，否则不给你进去
-    if (to.path === '/sign' || to.path === '/tabbar/home' || to.name === 'detail') {
+    if (status == 1 || to.path === '/sign' || to.path === '/tabbar/home' || to.name === 'detail') {
         next()
     } else {
         // 编程式导航
@@ -93,6 +97,4 @@ router.beforeEach(async (to, from, next) => {
     }
 
 })
-
-
 export default router
