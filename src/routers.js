@@ -15,6 +15,7 @@ import Mine from './components/Tabbar/Mine'
 import Detail from './components/Detail'
 import Sign from './components/Sign'
 import Setting from './components/Setting'
+import News from './components/News'
 
 
 const routes = [{
@@ -40,13 +41,8 @@ const routes = [{
     },
     { //详情页
         name: 'detail',
-        path: '/detail/:id/:name',
+        path: '/detail',
         component: Detail,
-        // 我往detail组建里面传入了props
-        props: {
-            default: true,
-            sidebar: false
-        }
     },
     { //登录页
         name: 'sign',
@@ -57,6 +53,11 @@ const routes = [{
         name: 'setting',
         path: '/setting',
         component: Setting,
+    },
+    { //消息页
+        name: 'news',
+        path: '/news',
+        component: News,
     },
     // 重定向
     {
@@ -76,24 +77,10 @@ const router = new VueRouter({
 })
 
 
-router.beforeEach(async (to, from, next) => {
-    // const data = await axios.post('https://www.easy-mock.com/mock/5d3fe0fc738f621651cd1f4a/list/login', {
-    //     params: {
-    //         // 存在cookie里面
-    //         // 用token代替你的用户名和密码
-    //         token: 'ahsdioasydhkaujhdaskj'
-    //     }
-    // })
-    // let isLogin = data.data.data.status
-    // 如果你没登陆你就进sign
-    // 如果你登陆 next
-
-    // 如果你登陆了你就next
-    // 或者你就要去登陆页，你也可以next
+router.beforeEach(async(to, from, next) => {
     let status = Cookies.get("status");
-
     // 如果你是首页，详情页，登录页或者你登陆了，都可以进去，否则不给你进去
-    if (status == 1 || to.path === '/sign' || to.path === '/tabbar/home' || to.name === 'detail') {
+    if (status == 1 || to.path === '/sign' || to.path === '/tabbar/home' || to.path === '/detail' || to.path === "/news") {
         next()
     } else {
         // 编程式导航

@@ -22,16 +22,14 @@ import {
     //Tab
     Tab,
     Tabs,
-    // lunbo
+    //轮播图
     Swipe,
     SwipeItem,
     // image
     Image,
     // 宫格
     Grid,
-    GridItem
-
-
+    GridItem,
 } from 'vant';
 
 
@@ -56,6 +54,4 @@ export default () => {
     Vue.use(Image);
     // 宫格
     Vue.use(Grid).use(GridItem);
-
-
 }

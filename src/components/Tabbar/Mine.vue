@@ -3,7 +3,7 @@
     <!-- 头部 -->
     <van-nav-bar :left-arrow="false" :border="false">
       <van-icon name="setting-o" slot="left" color="#333" size="1.8rem" @click="goTOset" />
-      <van-icon name="comment-o" slot="right" color="#333" size="1.8rem" />
+      <van-icon name="comment-o" slot="right" color="#333" size="1.8rem" @click="newsTo" />
     </van-nav-bar>
     <!-- 分割线 -->
     <div style="background:#f9f9f9; height:4px;"></div>
@@ -19,23 +19,35 @@
     <!-- 我的订单 -->
     <div class="dingdan">
       <!-- 标题 -->
-      <div style="display:flex;border-bottom:1px solid #f9f9f9; justify-content: space-between;padding:0 20px;height:40px;align-items: center;">
+      <div
+        style="display:flex;border-bottom:1px solid #f9f9f9; justify-content: space-between;padding:0 20px;height:40px;align-items: center;"
+      >
         <span>我的订单</span>
-        <span class="more" style="display:flex; align-items: center;color:#ddd;font-size:14px">查看全部
+        <span class="more" style="display:flex; align-items: center;color:#ddd;font-size:14px">
+          查看全部
           <van-icon name="arrow" />
         </span>
       </div>
       <!-- 宫格列表 -->
       <van-grid :border="false" style="height: 100px;" class="dingdangongge">
-        <van-grid-item v-for="(item,value) in dingdanArr" :key="value" :icon="item.icon" :text="item.title" />
+        <van-grid-item
+          v-for="(item,value) in dingdanArr"
+          :key="value"
+          :icon="item.icon"
+          :text="item.title"
+        />
       </van-grid>
     </div>
     <!-- 分割线 -->
     <div style="background:#f9f9f9; height:4px;"></div>
     <!-- 其他宫格 -->
     <van-grid :border="false" :column-num="4">
-      <van-grid-item v-for="(item,index) in otherArr" :key="index" :icon="item.icon" :text="item.title">
-      </van-grid-item>
+      <van-grid-item
+        v-for="(item,index) in otherArr"
+        :key="index"
+        :icon="item.icon"
+        :text="item.title"
+      ></van-grid-item>
     </van-grid>
   </div>
 </template>
@@ -91,8 +103,13 @@ export default {
     };
   },
   methods: {
+    //跳转系统设置
     goTOset() {
       this.$router.push({ name: "setting" });
+    },
+    //跳转消息页
+    newsTo() {
+      this.$router.push("/news");
     }
   }
 };
