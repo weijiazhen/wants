@@ -1,18 +1,5 @@
 <template>
   <div class="tabbar">
-    <!-- 头部搜索框 -->
-    <div  class="search">
-      <van-search
-        placeholder=" 潮流新品特卖 "
-        v-model="value"
-        right-icon="contact"
-        background="#fff034"
-        input-align="center"
-      />
-      <!-- <div style="float:left" slot="action" @click="onSearch">
-        <img src="http://w.wantscart.com/static/images/2.png" alt="" width="22">
-      </div> -->
-    </div>
     <!-- 第一层路由 -->
     <keep-alive>
       <router-view></router-view>
@@ -32,15 +19,15 @@ export default {
     return {
       active: 0,
       value: "",
-      logo: "../assets/images/logo.png"
+      navArr: ["推荐", "居家", "服装", "鞋靴", "包类"],
+      navNum: 5
     };
   },
   methods: {
+    onSearch() {},
     navTo(name) {
       // 编程式导航
-      this.$router.push({
-        name
-      });
+      this.$router.push({ name });
     }
   }
 };

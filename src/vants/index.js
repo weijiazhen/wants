@@ -19,6 +19,9 @@ import {
     // 单元格
     Cell,
     CellGroup,
+    //Tab
+    Tab,
+    Tabs,
 } from 'vant';
 
 
@@ -35,6 +38,8 @@ export default () => {
     Vue.use(Button);
     // 单元格
     Vue.use(Cell).use(CellGroup);
+    // tab
+    Vue.use(Tab).use(Tabs);
 
 
 }
