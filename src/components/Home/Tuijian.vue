@@ -1,54 +1,46 @@
 <template>
   <div class="tuijian" style="margin-bottom:20px;background:#f0f0f0;">
     <!-- 图片列表 -->
-    <div v-for="(item,index) in recommendArr"
-    :key="index"
-    >
+    <div v-for="(item,index) in recommendArr" :key="index">
       <!-- 第1行-每日新品 -->
       <div class="wants-clearfix wants-12" style="display:flex;">
-            <!-- 第一个 -->
-					<div class="wants-clearfix" v-for="(i,j) in item.block_items" :key="j" style="flex:1">
-						<div class="wants-left"  >
-								<img :src="i.item_image" alt="" width="100%">
-						</div>
-					</div>
+        <!-- 第一个 -->
+        <div class="wants-clearfix" v-for="(i,j) in item.block_items" :key="j" style="flex:1">
+          <div class="wants-left">
+            <img :src="i.item_image" alt width="100%" />
+          </div>
+        </div>
       </div>
     </div>
     <!-- 热卖风格-热门分类-->
-      <div>
-    <div v-for="(item2,index2) in hotGood"
-    :key="index2"
-    >
-      <!-- 第1行-每日新品 -->
-      <div class="wants-clearfix wants-12" style="display:flex;">
-            <!-- 第一个 -->
-					<div class="wants-clearfix" v-for="(i2,j2) in item2.block_items" :key="j2" style="flex:1">
-						<div class="wants-left"  >
-								<img :src="i2.item_image" alt="" width="100%">
-						</div>
-					</div>
+    <div>
+      <div v-for="(item2,index2) in hotGood" :key="index2">
+        <!-- 第1行-每日新品 -->
+        <div class="wants-clearfix wants-12" style="display:flex;">
+          <!-- 第一个 -->
+          <div class="wants-clearfix" v-for="(i2,j2) in item2.block_items" :key="j2" style="flex:1">
+            <div class="wants-left">
+              <img :src="i2.item_image" alt width="100%" />
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
     </div>
     <!-- 剩下的 -->
     <div>
-    <div v-for="(item2,index2) in leftArr"
-    :key="index2"
-    >
-      <!-- 第1行-每日新品 -->
-      <div class="wants-clearfix wants-12" style="display:flex;">
-            <!-- 第一个 -->
-					<div class="wants-clearfix" v-for="(i2,j2) in item2.block_items" :key="j2" style="flex:1">
-						<div class="wants-left"  >
-								<img :src="i2.item_image" alt="" width="100%">
-						</div>
-					</div>
+      <div v-for="(item2,index2) in leftArr" :key="index2">
+        <!-- 第1行-每日新品 -->
+        <div class="wants-clearfix wants-12" style="display:flex;">
+          <!-- 第一个 -->
+          <div class="wants-clearfix" v-for="(i2,j2) in item2.block_items" :key="j2" style="flex:1">
+            <div class="wants-left">
+              <img :src="i2.item_image" alt width="100%" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    </div>
-
   </div>
-    
 </template>
 
 <script>

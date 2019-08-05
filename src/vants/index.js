@@ -22,6 +22,9 @@ import {
     //Tab
     Tab,
     Tabs,
+    //轮播图
+    Swipe,
+    SwipeItem
 } from 'vant';
 
 
@@ -40,6 +43,5 @@ export default () => {
     Vue.use(Cell).use(CellGroup);
     // tab
     Vue.use(Tab).use(Tabs);
-
-
+    Vue.use(Swipe).use(SwipeItem);
 }

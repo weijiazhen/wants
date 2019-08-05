@@ -9,6 +9,7 @@
       placeholder=" 潮流新品特卖 "
       show-action
       @search="onSearch"
+      shape="round"
     >
       <div slot="action" @click="onSearch">
         <img
@@ -18,39 +19,48 @@
         />
       </div>
       <div slot="action" @click="onSearch">
-        <img src="http://w.wantscart.com/static/images/2.png" width="22" style="margin-top:10px" />
+        <img
+          src="http://w.wantscart.com/static/images/2.png"
+          width="22"
+          style="margin-top:10px"
+          @click="newsTo"
+        />
       </div>
     </van-search>
     <!-- 2.标签栏 -->
-    <van-tabs animated line-width="75px"  line-height="1px" :swipe-threshold="navNum">
+    <van-tabs animated line-width="75px" line-height="1px" :swipe-threshold="navNum">
       <!-- 推荐 -->
       <van-tab :title="navArr[0]">
-        <Tuijian/>
+        <Tuijian />
       </van-tab>
       <!-- 居家 -->
       <van-tab :title="navArr[1]">
-        <!-- <Tuijian/> -->居家
+        <Jujia />
       </van-tab>
       <!-- 服装 -->
       <van-tab :title="navArr[2]">
-        <!-- <Tuijian/> -->服装
+        <!-- <Tuijian/> -->
+        服装
       </van-tab>
       <!-- 鞋靴 -->
       <van-tab :title="navArr[3]">
-        <!-- <Tuijian/> -->鞋靴
+        <!-- <Tuijian/> -->
+        鞋靴
       </van-tab>
       <!-- 包类 -->
       <van-tab :title="navArr[4]">
-        <!-- <Tuijian/> -->包类
+        <!-- <Tuijian/> -->
+        包类
       </van-tab>
     </van-tabs>
     <!-- 尾部 -->
-    <PubFooter/>
-  </div> 
+    <PubFooter />
+  </div>
 </template>
 <script>
 import Tuijian from "../Home/Tuijian";
 import PubFooter from "../Home/PubFooter";
+import Jujia from "../Home/Jujia";
 export default {
   data() {
     return {
@@ -66,11 +76,15 @@ export default {
       this.$router.push({
         name
       });
+    },
+    newsTo() {
+      this.$router.push("/news");
     }
   },
   components: {
     Tuijian,
-    PubFooter
+    PubFooter,
+    Jujia
   }
 };
 </script>
