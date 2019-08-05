@@ -16,6 +16,7 @@ import Detail from './components/Detail'
 import Sign from './components/Sign'
 import Setting from './components/Setting'
 import News from './components/News'
+import Search from './components/Search'
 
 
 const routes = [{
@@ -59,6 +60,11 @@ const routes = [{
         path: '/news',
         component: News,
     },
+    { //搜索页
+        name: 'search',
+        path: '/search',
+        component: Search,
+    },
     // 重定向
     {
         path: '/',
@@ -80,7 +86,7 @@ const router = new VueRouter({
 router.beforeEach(async(to, from, next) => {
     let status = Cookies.get("status");
     // 如果你是首页，详情页，登录页或者你登陆了，都可以进去，否则不给你进去
-    if (status == 1 || to.path === '/sign' || to.path === '/tabbar/home' || to.path === '/detail' || to.path === "/news") {
+    if (status == 1 || to.path === '/sign' || to.path === '/tabbar/home' || to.path === '/search' || to.path === '/detail' || to.path === "/news") {
         next()
     } else {
         // 编程式导航

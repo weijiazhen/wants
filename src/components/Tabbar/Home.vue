@@ -8,17 +8,17 @@
       v-model="value"
       placeholder=" 潮流新品特卖 "
       show-action
-      @search="onSearch"
+      @click="toSearch()"
       shape="round"
     >
-      <div slot="action" @click="onSearch">
+      <div slot="action">
         <img
           src="http://w.wantscart.com/static/images/3.png"
           width="22"
           style="position:absolute;left:10px;top:20px;"
         />
       </div>
-      <div slot="action" @click="onSearch">
+      <div slot="action">
         <img
           src="http://w.wantscart.com/static/images/2.png"
           width="22"
@@ -39,8 +39,7 @@
       </van-tab>
       <!-- 服装 -->
       <van-tab :title="navArr[2]">
-        <!-- <Tuijian/> -->
-        服装
+        <Fuzhuang />
       </van-tab>
       <!-- 鞋靴 -->
       <van-tab :title="navArr[3]">
@@ -58,6 +57,7 @@
 <script>
 // 推荐
 import Tuijian from "../Home/Tuijian";
+import Fuzhuang from "../Home/Fuzhuang";
 // 鞋靴
 import Shoes from "../Home/Shoes";
 // 包类
@@ -74,7 +74,6 @@ export default {
     };
   },
   methods: {
-    onSearch() {},
     navTo(name) {
       // 编程式导航
       this.$router.push({
@@ -83,6 +82,11 @@ export default {
     },
     newsTo() {
       this.$router.push("/news");
+    },
+    toSearch(){
+       this.$router.push({
+          name: "search"
+       })
     }
   },
   components: {
@@ -90,7 +94,8 @@ export default {
     PubFooter,
     Shoes,
     Bag,
-    Jujia
+    Jujia,
+    Fuzhuang
   }
 };
 </script>

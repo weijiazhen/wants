@@ -7,7 +7,7 @@
         <!-- 第一个 -->
         <div class="wants-clearfix" v-for="(i,j) in item.block_items" :key="j" style="flex:1">
           <div class="wants-left">
-            <img :src="i.item_image" alt width="100%" />
+            <img @click="toDetail()" :src="i.item_image" alt width="100%" />
           </div>
         </div>
       </div>
@@ -51,6 +51,13 @@ export default {
       hotGood: [],
       leftArr: []
     };
+  },
+  methods:{
+    toDetail(){
+       this.$router.push({
+          name: "detail"
+       })
+    }
   },
   async created() {
     let result = await this.$axios(
