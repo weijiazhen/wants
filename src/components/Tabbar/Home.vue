@@ -2,10 +2,18 @@
   <div class="home">
     <!-- 1.搜索 -->
     <van-search
+<<<<<<< HEAD
       background="#fff034"
       class="fixedSearch"
       v-model="value"
       placeholder="请输入搜索内容"
+=======
+      style="padding-left:45px;"
+      background="#fff034"
+      class="fixedSearch"
+      v-model="value"
+      placeholder=" 潮流新品特卖 "
+>>>>>>> eba21027b1598542b8a77d3065d9fd14ad7704e8
       show-action
       @search="onSearch"
     >
@@ -13,6 +21,7 @@
         <img
           src="http://w.wantscart.com/static/images/3.png"
           width="22"
+<<<<<<< HEAD
           style="position:absolute;left:10px;top:25px;"
         />
       </div>
@@ -40,11 +49,47 @@
     </div>
   </div>
 </template>
+=======
+          style="position:absolute;left:10px;top:20px;"
+        />
+      </div>
+      <div slot="action" @click="onSearch">
+        <img src="http://w.wantscart.com/static/images/2.png" width="22" style="margin-top:10px" />
+      </div>
+    </van-search>
+    <!-- 2.标签栏 -->
+    <van-tabs animated line-width="75px"  line-height="1px" :swipe-threshold="navNum">
+      <!-- 推荐 -->
+      <van-tab :title="navArr[0]">
+        <Tuijian/>
+      </van-tab>
+      <!-- 居家 -->
+      <van-tab :title="navArr[1]">
+        <!-- <Tuijian/> -->居家
+      </van-tab>
+      <!-- 服装 -->
+      <van-tab :title="navArr[2]">
+        <!-- <Tuijian/> -->服装
+      </van-tab>
+      <!-- 鞋靴 -->
+      <van-tab :title="navArr[3]">
+        <!-- <Tuijian/> -->鞋靴
+      </van-tab>
+      <!-- 包类 -->
+      <van-tab :title="navArr[4]">
+        <!-- <Tuijian/> -->包类
+      </van-tab>
+    </van-tabs>
+>>>>>>> eba21027b1598542b8a77d3065d9fd14ad7704e8
 
+  </div> 
+</template>
 <script>
+import Tuijian from "../Home/Tuijian";
 export default {
   data() {
     return {
+<<<<<<< HEAD
       value: "", //1.搜索框
       recommendArr: [] //2.推荐
     };
@@ -58,14 +103,31 @@ export default {
     );
     this.recommendArr = result.data.blocks.slice(0, 6);
     console.log(this.recommendArr);
+=======
+      active: 0,
+      value: "",
+      navArr: ["推荐", "居家", "服装", "鞋靴", "包类"],
+      navNum: 5
+    };
+  },
+  methods: {
+    onSearch() {},
+    navTo(name) {
+      // 编程式导航
+      this.$router.push({
+        name
+      });
+    }
+  },
+  components: {
+    Tuijian
+>>>>>>> eba21027b1598542b8a77d3065d9fd14ad7704e8
   }
 };
 </script>
-<style scoped>
-.wants-left {
-  float: left;
-}
-</style>
+
+
+
 
 
 
