@@ -1,5 +1,5 @@
 <template>
-  <div class="tuijian" style="margin-bottom:50px;background:#f0f0f0;">
+  <div class="tuijian" style="margin-bottom:20px;background:#f0f0f0;">
     <!-- 图片列表 -->
     <div v-for="(item,index) in recommendArr"
     :key="index"

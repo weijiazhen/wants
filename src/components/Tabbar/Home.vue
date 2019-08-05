@@ -45,10 +45,13 @@
       </van-tab>
     </van-tabs>
 
+    <!-- 尾部 -->
+    <PubFooter/>
   </div> 
 </template>
 <script>
 import Tuijian from "../Home/Tuijian";
+import PubFooter from "../Home/PubFooter";
 export default {
   data() {
     return {
@@ -68,7 +71,8 @@ export default {
     }
   },
   components: {
-    Tuijian
+    Tuijian,
+    PubFooter
   }
 };
 </script>
