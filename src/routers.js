@@ -14,6 +14,7 @@ import Mine from './components/Tabbar/Mine'
 
 import Detail from './components/Detail'
 import Sign from './components/Sign'
+import Setting from './components/Setting'
 
 
 const routes = [{
@@ -51,6 +52,11 @@ const routes = [{
         name: 'sign',
         path: '/sign',
         component: Sign,
+    },
+    { //系统设置
+        name: 'setting',
+        path: '/setting',
+        component: Setting,
     },
     // 重定向
     {

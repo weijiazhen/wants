@@ -1,28 +1,16 @@
 <template>
   <div class="home">
     <!-- 1.搜索 -->
-    <van-search
-      style="padding-left:45px;"
-      background="#fff034"
-      class="fixedSearch"
-      v-model="value"
-      placeholder=" 潮流新品特卖 "
-      show-action
-      @search="onSearch"
-    >
+    <van-search style="padding-left:45px;" background="#fff034" class="fixedSearch" v-model="value" placeholder=" 潮流新品特卖 " show-action @search="onSearch">
       <div slot="action" @click="onSearch">
-        <img
-          src="http://w.wantscart.com/static/images/3.png"
-          width="22"
-          style="position:absolute;left:10px;top:20px;"
-        />
+        <img src="http://w.wantscart.com/static/images/3.png" width="22" style="position:absolute;left:10px;top:20px;" />
       </div>
       <div slot="action" @click="onSearch">
         <img src="http://w.wantscart.com/static/images/2.png" width="22" style="margin-top:10px" />
       </div>
     </van-search>
     <!-- 2.标签栏 -->
-    <van-tabs animated line-width="75px"  line-height="1px" :swipe-threshold="navNum">
+    <van-tabs animated line-width="75px" line-height="1px" :swipe-threshold="navNum">
       <!-- 推荐 -->
       <van-tab :title="navArr[0]">
         <Tuijian/>
@@ -37,19 +25,25 @@
       </van-tab>
       <!-- 鞋靴 -->
       <van-tab :title="navArr[3]">
-        <!-- <Tuijian/> -->鞋靴
+        <Shoes/>
       </van-tab>
       <!-- 包类 -->
       <van-tab :title="navArr[4]">
-        <!-- <Tuijian/> -->包类
+        <Bag/>
       </van-tab>
     </van-tabs>
     <!-- 尾部 -->
     <PubFooter/>
-  </div> 
+  </div>
 </template>
 <script>
+// 推荐
 import Tuijian from "../Home/Tuijian";
+// 鞋靴
+import Shoes from "../Home/Shoes";
+// 包类
+import Bag from "../Home/Bag";
+// 公共底部
 import PubFooter from "../Home/PubFooter";
 export default {
   data() {
@@ -70,7 +64,9 @@ export default {
   },
   components: {
     Tuijian,
-    PubFooter
+    PubFooter,
+    Shoes,
+    Bags
   }
 };
 </script>
