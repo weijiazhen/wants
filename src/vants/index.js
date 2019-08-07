@@ -30,6 +30,8 @@ import {
     // 宫格
     Grid,
     GridItem,
+    // 弹出层
+    Popup,
 } from 'vant';
 
 
@@ -54,4 +56,6 @@ export default () => {
     Vue.use(Image);
     // 宫格
     Vue.use(Grid).use(GridItem);
+    // 弹出层
+    Vue.use(Popup);
 }
