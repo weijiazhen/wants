@@ -1,9 +1,14 @@
 <template>
   <div class="Detail">
+    <!-- 返回按钮 -->
+    <div class="header">
+      <van-icon name="arrow-left" size="30px" @click="goBack" />
+      <van-icon name="apps-o" size="30px" style="float:right" />
+    </div>
     <!-- 1.轮播图 -->
     <van-swipe :autoplay="3000" indicator-color="red" style="background:#eee">
       <van-swipe-item v-for="(item,index) in imgs" :key="index">
-        <img :src="item" width="375" alt />
+        <img :src="item" width="100%" />
       </van-swipe-item>
     </van-swipe>
     <!-- 2.标题 -->
@@ -29,6 +34,25 @@
     <div class="d_detail2">
       <img v-for="(item,index) in detail" :key="index" :src="item" alt />
     </div>
+    <!-- 商品导航 -->
+    <div class="buy">
+      <van-goods-action>
+        <van-goods-action-icon icon="chat-o" text="客服" />
+        <van-goods-action-icon icon="cart-o" text="购物车" :info="num" @click="goTOcar" />
+        <van-goods-action-button
+          type="warning"
+          text="加入购物车"
+          style="background:#333333"
+          @click="joinButton"
+        />
+        <van-goods-action-button
+          type="default"
+          text="立即购买"
+          style="background:#fff034"
+          @click="buyButton"
+        />
+      </van-goods-action>
+    </div>
   </div>
 </template>
 
@@ -42,6 +66,8 @@ export default {
       // price:detaildata.price,
       // brand:detaildata.brand,
       // detail:detaildata.detail
+
+      num: 1, //当前购买数量
       imgs: [
         "http://static.wantscart.com/product/1560233565496_750_1000",
         "http://static.wantscart.com/product/1560234495420_750_783",
@@ -76,19 +102,37 @@ export default {
       ]
     };
   },
-  methods:{
-    
+  methods: {
+    //返回按钮
+    goBack() {
+      this.$router.go(-1);
+    },
+    joinButton() {
+      // 加入购物车
+    },
+    buyButton() {
+      //立即购买
+    },
+    //跳转购物车
+    goTOcar() {
+      this.$router.push({ path: "tabbar/car" });
+    }
   }
 };
 </script>
 
-
-
-
 <style scoped>
 .Detail {
   background: #eee;
-  height: 2000px;
+  /* height: 2000px; */
+}
+.header {
+  width: 100%;
+  background: #eee;
+  position: fixed;
+  top: 0;
+  left: 0;
+  line-height: 20px;
 }
 .d_detail {
   padding: 25px 0;

@@ -7,16 +7,41 @@ Vue.use(VueRouter)
 import Cookies from 'js-cookie'
 
 // 定义路由组件
-import Tabbar from './components/Tabbar'
-import Home from './components/Tabbar/Home'
-import Car from './components/Tabbar/Car'
-import Mine from './components/Tabbar/Mine'
+// import Tabbar from './components/Tabbar'
+// import Home from './components/Tabbar/Home'
+// import Car from './components/Tabbar/Car'
+// import Mine from './components/Tabbar/Mine'
 
-import Detail from './components/Detail'
-import Sign from './components/Sign'
-import Setting from './components/Setting'
-import News from './components/News'
-import Search from './components/Search'
+// import Detail from './components/Detail'
+// import Sign from './components/Sign'
+// import Setting from './components/Setting'
+// import News from './components/News'
+// import Search from './components/Search'
+
+//路由懒加载
+const Tabbar = () =>
+    import ('./components/Tabbar')
+
+const Home = () =>
+    import ('./components/Tabbar/Home')
+const Car = () =>
+    import ('./components/Tabbar/Car')
+const Mine = () =>
+    import ('./components/Tabbar/Mine')
+
+
+const Detail = () =>
+    import ('./components/Detail')
+const Sign = () =>
+    import ('./components/Sign')
+const Setting = () =>
+    import ('./components/Setting')
+const News = () =>
+    import ('./components/News')
+const Search = () =>
+    import ('./components/Search')
+
+
 
 
 const routes = [{
