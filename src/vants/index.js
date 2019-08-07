@@ -40,7 +40,9 @@ import {
     Checkbox,
     CheckboxGroup,
     // 提交订单栏
-    SubmitBar
+    SubmitBar,
+    // 弹出层
+    Popup,
 } from 'vant';
 
 
@@ -73,4 +75,6 @@ export default () => {
     Vue.use(Checkbox).use(CheckboxGroup);
     // 提交订单栏
     Vue.use(SubmitBar);
+    // 弹出层
+    Vue.use(Popup);
 }
