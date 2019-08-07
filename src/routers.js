@@ -68,7 +68,8 @@ const routes = [{
     },
     { //详情页
         name: 'detail',
-        path: '/detail',
+        //把行和列的id传过去
+        path: '/detail/:rowid/:colid',
         component: Detail,
     },
     { //登录页
@@ -117,7 +118,7 @@ const router = new VueRouter({
 router.beforeEach(async (to, from, next) => {
     let status = Cookies.get("status");
     // 如果你是首页，详情页，登录页或者你登陆了，都可以进去，否则不给你进去
-    if (status == 1 || to.path === '/sign' || to.path === '/tabbar/home' || to.path === '/search' || to.path === '/detail' || to.path === "/news") {
+    if (status == 1 || to.path === '/sign' || to.path === '/tabbar/home' || to.path === '/search' || to.name === 'detail' || to.path === "/news") {
         next()
     } else {
         // 编程式导航
