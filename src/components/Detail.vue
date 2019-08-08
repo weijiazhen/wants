@@ -100,7 +100,7 @@ export default {
     },
     // 加入购物车
     joinButton() {
-      let userName =  window.localStorage.getItem("username");
+      let userName = window.localStorage.getItem("username");
       let goodsId = this.rowid.toString() + this.colid.toString(); //获取行与列的id传给后端查询数据
 
       //未登录
