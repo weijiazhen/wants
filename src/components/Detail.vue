@@ -23,7 +23,7 @@
     <!-- 4.品牌介绍 -->
     <div class="d_brand">
       <p class="d_tit">品牌介绍</p>
-      <div class="d_img">
+      <div class="d_img" v-if="interfaceAddress.brand">
         <img id="brand_img" src width="25" height="25" style="width: 25px" />
         <span class="font" v-text="interfaceAddress.brand.name"></span>
       </div>
@@ -35,7 +35,7 @@
     <!-- 6.底部商品导航 -->
     <van-goods-action class="buy">
       <van-goods-action-icon icon="chat-o" text="客服" />
-      <van-goods-action-icon icon="cart-o" text="购物车" :info="num" />
+      <van-goods-action-icon icon="cart-o" text="购物车" @click="goToCar()" :info="num" />
       <van-goods-action-button
         type="warning"
         text="加入购物车"
@@ -57,8 +57,8 @@
         <div class="no-login">
           <span>你当前未登录</span>
         </div>
-        <a class="gre-btn" href="http://localhost:8080/#/sign">我有wants账号，去登录&gt;&gt;</a>
-        <a class="gre-btn" href="http://localhost:8080/#/sign">去注册&gt;&gt;</a>
+        <a class="gre-btn" @click="goSign()">我有wants账号，去登录&gt;&gt;</a>
+        <a class="gre-btn" @click="goSign()">去注册&gt;&gt;</a>
         <a href="javascript:;" @click="close()">
           <div class="thisxclose">×</div>
         </a>
@@ -94,6 +94,10 @@ export default {
     goBack() {
       this.$router.go(-1);
     },
+    //跳转登录页
+    goSign() {
+      this.$router.push("/sign");
+    },
     // 加入购物车
     joinButton() {
       let userName = Cookies.get("username");
@@ -101,7 +105,7 @@ export default {
 
       //未登录
       if (userName == undefined) {
-        this.show = true;//显示登陆弹出层
+        this.show = true; //显示登陆弹出层
       } else {
         //已登录
         this.$axios
@@ -116,19 +120,22 @@ export default {
             }
           })
           .then(res => {
-            console.log(res);
+            // console.log(res);
           });
         this.num++;
       }
     },
     //立即购买
     buyButton() {
-      console.log("立即购买");
+      // console.log("立即购买");
     },
     // 点击显示层关闭按钮
     close() {
       this.show2 = false;
       this.show = false;
+    },
+    goToCar() {
+      this.$router.push("/tabbar/car");
     }
   },
   async activated() {
@@ -183,13 +190,13 @@ export default {
     this.shopname = this.interfaceAddress.creator.name;
     this.imgurl = this.interfaceAddress.small_img;
     this.title = this.interfaceAddress.title;
-  },
-  deactivated() {
-    let url = ""; //清除地址，否则要刷新才能出现第二次跳转后的详情页
-  },
-  destoryed() {
-    let url = "";
   }
+  // deactivated() {
+  //   let url = ""; //清除地址，否则要刷新才能出现第二次跳转后的详情页
+  // },
+  // destoryed() {
+  //   let url = "";
+  // }
 };
 </script>
 
@@ -204,7 +211,9 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
+  height: 30px;
   line-height: 20px;
+  z-index: 9999;
 }
 .d_detail {
   padding: 25px 0;

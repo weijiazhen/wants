@@ -1,23 +1,23 @@
 <template>
   <div class="car">
-    <!-- 1.头部 -->
+    <!--头部 -->
     <header class="head-top rela">
       <div class>
-        <a href="http://localhost:8080/#/tabbar/home" class="aback"></a>
+        <a href="javascript:voiod(0)" @click="goTohome()" class="aback"></a>
         <span class="topbar-title">购物车</span>
-        <a href="http://localhost:8080/#/tabbar/home" class="mla"></a>
+        <a href="javascript:voiod(0)" @click="goTohome()" class="mla"></a>
       </div>
     </header>
-    <!-- 2.空购物车 -->
-    <!-- <div class="emptydiv">
+    <!--空购物车 -->
+    <div v-show="bool" class="emptydiv">
       <div>
         <span class="u-emtcoupon">&nbsp;</span>
       </div>
       <div class="ftc emttip ft16 c666 mt">您的购物车空空如也</div>
       <div class="emt-a">
-        <a href="http://localhost:8080/#/tabbar/home" class="c999 ft16 mr5">随便逛逛</a>
+        <a href="javascript:voiod(0)" @click="goTohome()" class="c999 ft16 mr5">随便逛逛</a>
       </div>
-    </div>-->
+    </div>
 
     <!-- 商品数据 -->
     <div class="shop-wrap" v-for="(item,index) in dataArr" :key="index" style="margin-bottom:50px">
@@ -67,20 +67,27 @@
 
     <!-- 订单提交 -->
     <van-submit-bar :price="totalPrice" button-text="提交订单" @submit="onSubmit">
-      <van-checkbox checked-color="#fff034" v-model="checked" @click="allCheck()">全选</van-checkbox>
+      <van-checkbox
+        style="margin-left:15px;"
+        checked-color="#fff034"
+        v-model="checked"
+        @click="allCheck()"
+      >全选</van-checkbox>
     </van-submit-bar>
   </div>
 </template>
 
 <script>
 import Cookies from "js-cookie";
+import { fail } from "assert";
 export default {
   data() {
     return {
       checked: true, //多选框状态
       dataArr: [], //总数据
       numarr: [], //动态变化数组
-      newArr: [] //计算总价所需数组
+      newArr: [], //计算总价所需数组
+      bool: false
     };
   },
   methods: {
@@ -144,6 +151,11 @@ export default {
       let res = confirm("您确定要删除吗？");
       let username = Cookies.get("username");
       let goodId = this.dataArr[index].goodId;
+      if (this.dataArr.length == 0) {
+        this.bool = true;
+      } else if (this.dataArr.length !== 0) {
+        this.bool = false;
+      }
       if (res) {
         let url = await this.$axios("http://10.3.132.218:3000/cart/del?", {
           params: {
@@ -208,7 +220,18 @@ export default {
       }
     },
     // 订单提交
-    onSubmit() {}
+    onSubmit() {
+      if (this.dataArr.length == 0) {
+        alert("您的购物车是空的哦~");
+      } else if (this.dataArr.length !== 0) {
+        alert("提交成功~请到我的订单完成支付！");
+        this.$router.push("/tabbar/mine");
+      }
+    },
+    //返回主页
+    goTohome() {
+      this.$router.push("/tabbar/home");
+    }
   },
   computed: {
     totalPrice() {
@@ -235,6 +258,12 @@ export default {
       "http://10.3.132.218:3000/cart?username=" + username
     );
     this.dataArr = url.data;
+    // console.log(this.dataArr);
+    // if (this.dataArr.length == 0) {
+    //   this.bool = true;
+    // } else if (this.dataArr.length !== 0) {
+    //   this.bool = false;
+    // }
     for (var i = 0; i < this.dataArr.length; i++) {
       this.numarr.push(this.dataArr[i].goodNum);
     }
@@ -336,7 +365,7 @@ export default {
   text-align: center;
   border: 0.5px solid #cccc;
 }
-  /* margin-left: 5px; */
+/* margin-left: 5px; */
 .footer input {
   width: 30px;
   height: 25px;
