@@ -109,7 +109,7 @@ export default {
       } else {
         //已登录
         this.$axios
-          .get("http://10.3.132.218:3000/cart/insert?", {
+          .get("http://47.107.134.140:3000/cart/insert?", {
             params: {
               username: userName,
               goodId: goodsId,
