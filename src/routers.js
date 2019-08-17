@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 // 安装路由
 Vue.use(VueRouter)
 
-import Cookies from 'js-cookie'
+// import Cookies from 'js-cookie'
 
 // 定义路由组件
 // import Tabbar from './components/Tabbar'
